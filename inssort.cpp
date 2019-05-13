@@ -3,7 +3,7 @@
 #include<algorithm>
 #include<vector>
 
-using namespace std;
+using std::cin; using std::cout; using std::vector;
 
 int main()
 {
