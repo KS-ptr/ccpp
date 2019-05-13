@@ -116,28 +116,28 @@ void initialize(block[HEIGHT][WIDTH], int x, int y)
     if(y == 0)
     {
         if(x == 0)
-            notbombv = {0, 1, 16, 17};
-        else if(x == 15)
-            notbombv = {14, 15, 30, 31};
+            notbombv = {0, 1, WIDTH, WIDTH+1};
+        else if(x == WIDTH-1)
+            notbombv = {WIDTH-2, WIDTH-1, WIDTH*2-2, WIDTH*2-1};
         else
-            notbombv = {x-1, x, x+1, x+15, x+16, x+17};
+            notbombv = {x-1, x, x+1, x+WIDTH-1, x+WIDTH, x+WIDTH+1};
     }
 
-    else if(y == 15)
+    else if(y == HEIGHT-1)
     {
         if(x == 0)
-            notbombv = {224, 225, 240, 241};
-        else if(x == 15)
-            notbombv = {238, 239, 254, 255};
+            notbombv = {WIDTH*(HEIGHT-2), WIDTH*(HEIGHT-2)+1, WIDTH*(HEIGHT-1),  WIDTH*(HEIGHT-1)+1};
+        else if(x == WIDTH-1)
+            notbombv = {WIDTH*(HEIGHT-1)-2, WIDTH*(HEIGHT-1)-1, WIDTH*HEIGHT-2, WIDTH*HEIGHT-1};
         else
-            notbombv = {x+223, x+224, x+225, x+239, x+240, x+241};
+            notbombv = {x+WIDTH*(HEIGHT-2)-1, x+WIDTH*(HEIGHT-2), x+WIDTH*(HEIGHT-2)+1, x+WIDTH*(HEIGHT-1)-1, x+WIDTH*(HEIGHT-1), x+WIDTH*(HEIGHT-1)+1};
     }
 
     else
     {
         if(x == 0)
             notbombv = {(y-1)*HEIGHT+x, (y-1)*HEIGHT+x+1, y*HEIGHT+x, y*HEIGHT+x+1, (y+1)*HEIGHT+x, (y+1)*HEIGHT+x+1};
-        else if(x==15)
+        else if(x==WIDTH-1)
             notbombv = {(y-1)*HEIGHT+x-1, (y-1)*HEIGHT+x, y*HEIGHT+x-1, y*HEIGHT+x, (y+1)*HEIGHT+x-1, (y+1)*HEIGHT+x};
         else
             notbombv = {(y-1)*HEIGHT+x-1, (y-1)*HEIGHT+x, (y-1)*HEIGHT+x+1, y*HEIGHT+x-1, y*HEIGHT+x, y*HEIGHT+x+1,(y+1)*HEIGHT+x-1, (y+1)*HEIGHT+x, (y+1)*HEIGHT+x+1};
