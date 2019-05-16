@@ -15,19 +15,19 @@ int main()
          switch(cd-1)
         {
             case difficulty::easy:
-                ch = height[difficulty::easy];
-                cw = width[difficulty::easy];
-                cb = bombs[difficulty::easy];
+                ch = height[easy];
+                cw = width[easy];
+                cb = bombs[easy];
                 break;
             case difficulty::medium:
-                ch = height[difficulty::medium];
-                cw = width[difficulty::medium];
-                cb = bombs[difficulty::medium];
+                ch = height[medium];
+                cw = width[medium];
+                cb = bombs[medium];
                 break;
             case difficulty::hard:
-                ch = height[difficulty::hard];
-                cw = width[difficulty::hard];
-                cb = bombs[difficulty::hard];
+                ch = height[hard];
+                cw = width[hard];
+                cb = bombs[hard];
                 break;
             default:
                 cout << sysmsg.again;
@@ -45,20 +45,20 @@ int main()
         cin >> x >> y;
         switch(cmine.open(y, x))
         {
-            case -1:
-                cout << sysmsg.again;
+            case out_of_bounds:
+                cout << sysmsg.out_of_bounds;
                 break;
-            case -2:
-                cout << sysmsg.alreadyopen;
+            case already_open:
+                cout << sysmsg.already_open;
                 break;
-            case -3:
+            case game_over:
                 cout << sysmsg.over;
                 game = false;
                 cmine.coutover();
                 break;
-            case 0:
+            case on_game:
                 break;
-            case 1:
+            case clear:
                 cout << sysmsg.clear;
                 game = false;
                 cmine.coutover();

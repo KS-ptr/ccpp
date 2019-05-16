@@ -5,8 +5,7 @@
 #include <random>
 #include <time.h>
 
-using std::cout;
-using std::vector;
+using std::cout; using std::vector;
 
 namespace settings
 {
@@ -14,8 +13,8 @@ namespace settings
     {
         const char difficulty[64] = "difficulty?\n1:easy, 2:medium, 3:hard\n";
         const char again[32] = "invalid input. Try again.\n";
-        const char alreadyopen[64] = "already opened block. Please input again.\n";
-        const char rangeover[64] = "out of bounds. Please input again.\n";
+        const char already_open[64] = "already opened block. Please input again.\n";
+        const char out_of_bounds[64] = "out of bounds. Please input again.\n";
         const char input[64] = "where to open?(input x-ax, y-ax)\n>>";
         const char over[32] = "------GAME OVER------\n";
         const char clear[32] = "*****CONGRATS!*****\n";
@@ -52,6 +51,15 @@ namespace settings
         hard
     };
 
+    enum open_value
+    {
+        on_game = 0,
+        clear,
+        game_over,
+        already_open,
+        out_of_bounds,
+    };
+
     const int height[3] = {10, 16, 20};
     const int width[3] = {10, 16, 20};
     const int bombs[3] = {14, 40, 75};
@@ -68,7 +76,7 @@ namespace settings
 
     public:
         int mheight, mwidth, mbombs;
-        block **field = new block *[mheight];
+        block **field = new block *[mheight];   //dynamic allocation of 2-d array
 
         //constructor => decides size of field, numbers of bombs
         mine(int height, int width, int bombs)
@@ -80,24 +88,21 @@ namespace settings
                 field[i] = new block[mwidth];
         }
 
-        //return value : -1 => invalid input, -2 => already opened, -3 => gameover, 0 => on game, 1 => clear
         //calls initialize(init_y, init_x) when first input occurs
         //calls itself recursively if field[y][x].neighbor == 0
-        int open(int y, int x)
+        open_value open(int y, int x)
         {
             if (y < 0 || y >= mheight || x < 0 || x >= mwidth)
-                return -1;
+                return out_of_bounds;
             if (field[y][x].state)
-                return -2;
-
+                return already_open;
+            if (field[y][x].isbomb)
+                return game_over;
             if (opend_blocks == 0)
                 initialize(y, x);
 
             field[y][x].state = true;
             opend_blocks += 1;
-
-            if (field[y][x].isbomb)
-                return -3;
 
             if (field[y][x].neighbor == 0)
             {
@@ -111,9 +116,9 @@ namespace settings
                 open(y + 1, x + 1);
             }
             if (opend_blocks == mheight * mwidth - mbombs)
-                return 1;
+                return clear;
             else
-                return 0;
+                return on_game;
         }
 
         //displays field on console
