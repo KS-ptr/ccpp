@@ -18,7 +18,7 @@ namespace settings
         const char rangeover[64] = "out of bounds. Please input again.\n";
         const char input[64] = "where to open?(input x-ax, y-ax)\n>>";
         const char over[32] = "------GAME OVER------\n";
-        const char clear[32] = "/\\/\\/CONGRATS!\\/\\/\\\n";
+        const char clear[32] = "*****CONGRATS!*****\n";
         void coutheader(int width)
         {
             cout << "   |";
