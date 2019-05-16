@@ -33,7 +33,7 @@ int main()
                 cout << sysmsg.again;
                 break;
         } 
-     }while(cd < 1 || cd > 3);
+     }while(cd-1 < easy || cd-1 > hard);
     cout << ch << " * " << cw << "," << cb << " bombs\n";
     mine cmine(ch, cw, cb);
     
