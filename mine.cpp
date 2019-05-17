@@ -1,5 +1,8 @@
 #include "mine.hpp"
-
+#include <iomanip>
+#include <algorithm>
+#include <random>
+#include <time.h>
 using std::cout;
 
 mine::mine(int height, int width, int bombs)

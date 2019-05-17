@@ -1,5 +1,4 @@
 #include "mine.hpp"
-
 using namespace settings;
 using std::cin; using std::cout;
 
@@ -35,7 +34,7 @@ int main()
                 break;
         } 
      }while(cd-1 < easy || cd-1 > hard);
-    cout << ch << " * " << cw << "," << cb << " bombs\n";
+    cout << ch << " * " << cw << " ," << cb << " bombs\n";
     mine cmine(ch, cw, cb);
     
     while(game)
@@ -68,5 +67,6 @@ int main()
                 return -1;
         }
     }
+    system("pause");
     return 0;
 }

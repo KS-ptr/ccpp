@@ -1,10 +1,5 @@
 #include <iostream>
-#include <iomanip>
 #include <vector>
-#include <algorithm>
-#include <random>
-#include <time.h>
-
 using std::vector;
 
 namespace settings
