@@ -1,10 +1,11 @@
 #include "mine.hpp"
 
-using std::cin;
 using namespace settings;
+using std::cin; using std::cout;
 
 int main()
 {
+    msg sysmsg;
     bool game = true;
     int cd, ch, cw, cb; //difficulty, height, width, numbers of bombs
 
