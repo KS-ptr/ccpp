@@ -1,4 +1,5 @@
 #include "mine.hpp"
+#include<iostream>
 using namespace settings;
 using std::cin; using std::cout;
 
