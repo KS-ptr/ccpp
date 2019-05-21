@@ -9,7 +9,7 @@ using settings::open_value;
 
 mine::mine(int height, int width, int bombs)
 {   
-    opend_blocks = 0;
+    opened_blocks = 0;
     mheight = height;
     mwidth = width;
     mbombs = bombs;
@@ -28,10 +28,10 @@ settings::open_value mine::open(int y, int x)
         return open_value::already_open;
     if (field[y][x].isbomb)
         return open_value::game_over;
-    if (opend_blocks == 0)
+    if (opened_blocks == 0)
         initialize(y, x);
     field[y][x].state = true;
-    opend_blocks += 1;
+    opened_blocks += 1;
     if (field[y][x].neighbor == 0)
     {
         open(y - 1, x - 1);
@@ -43,7 +43,7 @@ settings::open_value mine::open(int y, int x)
         open(y + 1, x);
         open(y + 1, x + 1);
     }
-    if (opend_blocks == mheight * mwidth - mbombs)
+    if (opened_blocks == mheight * mwidth - mbombs)
         return open_value::clear;
     else
         return open_value::on_game;

@@ -46,12 +46,13 @@ class mine
 
     block **field;
     
-    int opend_blocks;
+    int opened_blocks;
 
 public:
     //constructor => decides size of field, numbers of bombs
     mine(int height, int width, int bombs);
 
+    //turns block.state true
     //calls initialize(init_y, init_x) when first input occurs
     //calls itself recursively if field[y][x].neighbor == 0
     settings::open_value open(int, int);
