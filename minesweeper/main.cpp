@@ -12,7 +12,7 @@ int main()
         cout << sysmsg.difficulty;
         cin >> cd;
         
-         switch(cd-1)
+        switch(cd-1)
         {
             case difficulty::easy:
                 ch = height[easy];
